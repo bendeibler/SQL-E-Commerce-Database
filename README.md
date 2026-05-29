@@ -19,27 +19,45 @@ To showcase my SQL skills and techniques, I created an e-commerce database conta
 Check for Null Values
 
 select * 
+
 from customers
+
 where customer_id is NULL 
+
    or first_name is NULL
+   
    or last_name  is NULL
+   
    or email      is NULL
+   
    or city       is NULL
+   
    or state      is NULL 
+   
    or created_at is NULL
 
 select *
+
 from products
+
 where product_id is NULL
+
    or product_name is NULL
+   
    or price is NULL
+   
    or stock_quantity is NULL
 
 select *
+
 from orders
+
 where order_id is NULL
+
   or customer_id is NULL
+  
   or order_date is NULL
+  
   or status is NULL
 
 select * 
