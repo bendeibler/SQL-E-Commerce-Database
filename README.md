@@ -2,12 +2,18 @@
 
 ## Overview
 
-To showcase my SQL skills and techniques, I created an e-commerce database containing 4 tables. This entails setting up a retail database, performing exploratory analysis, and answering business related questions. 
+To showcase my SQL skills and techniques, I created an e-commerce database containing 4 tables. This entails setting up a retail database, performing exploratory analysis, and answering business related questions. The database contains 5 categories, 10 customers, 15 products, 15 orders, and 15 order items across 6 different states.
+
+## Tools
+- Database: SQL (Oracle APEX)
+- Editor: VS Code with SQLTools
 
 ## Schema
 
-- Customers: Customer_id, first_name, last_name, email, city, state, created_at
+- Customers: customer_id, first_name, last_name, email, city, state, created_at
 
+- Categories: category_id, category_name, description
+  
 - Products: product_id, product_name, price, stock_quantity
 
 - Orders: order_id, customer_id, order_date, status
@@ -15,7 +21,7 @@ To showcase my SQL skills and techniques, I created an e-commerce database conta
 - Order_items: order_item_id, order_id, product_id, quantity, unit_price
 
 ## Data Exploration
-Check for Null Values
+Null checks and deletions were performed across all 4 tables. Example for customers:
 ```sql
 select * 
 from customers
@@ -26,32 +32,6 @@ where customer_id is NULL
    or city       is NULL   
    or state      is NULL    
    or created_at is NULL
-```
-```sql
-select *
-from products
-where product_id is NULL
-   or product_name is NULL 
-   or price is NULL  
-   or stock_quantity is NULL
-```
-
-```sql
-select *
-from orders
-where order_id is NULL
-  or customer_id is NULL  
-  or order_date is NULL  
-  or status is NULL
-```
-```sql
-select * 
-from order_items
-where order_item_id is NULL
-  or order_id is NULL
-  or product_id is NULL
-  or quantity is NULL
-  or unit_price is NULL
 ```
 
 Remove Null values
@@ -65,28 +45,6 @@ where customer_id is NULL
    or city       is NULL
    or state      is NULL 
    or created_at is NULL
-```
-```sql
-Delete from products
-where product_id is NULL
-   or product_name is NULL
-   or price is NULL
-   or stock_quantity is NULL
-```
-```sql
-Delete from orders
-where order_id is NULL
-  or customer_id is NULL
-  or order_date is NULL
-  or status is NULL
-```
-```sql
-Delete from order_items
-where order_item_id is NULL
-  or order_id is NULL
-  or product_id is NULL
-  or quantity is NULL
-  or unit_price is NULL
 ```
 
 ## Queries
@@ -111,7 +69,7 @@ order by count(state) desc;
 
 ### Order products by price
 ```sql
-select product_name, price
+select product_name, price, category_id
 from products
 order by price desc;
 ```
@@ -148,16 +106,18 @@ group by c.state
 order by avg(oi.quantity * oi.unit_price) desc;
 ```
 
-### 
-
-
 
 
 ## Findings
-
-
-
-
+- There were 4 purchases over $500, and Micheal Williams was 2 of them when he bought a Laptop Pro 16" and an iPhone 15
+- Out of the 6 states, RI, MA, ME, and VT were the most common, all having 2 orders from each
+- Electronics were the most expensive category with 4 out of the top 5 products coming from the electronics category
+- Books were the least expensive with 3 out of the bottom 4 products coming from the books category
+- 12 out of 15 orders have been completed with 2 orders being shipped and 1 still pending. 
+- Rhode Island had the highest amount purchased with a total 
+of $2389.96 with Massachusetts close behind with a total of $2349.95
+- Rhode Island and Massachusetts also had the highest average purchase with an average of $597.49, and $587.49 respectively
+- Maine and New York came in with the lowest average purchase price showing an average amount of $58.99, and $89.99 respectively
 
 
 
