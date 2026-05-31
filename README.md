@@ -15,8 +15,8 @@ To showcase my SQL skills and techniques, I created an e-commerce database conta
 - Order_items: order_item_id, order_id, product_id, quantity, unit_price
 
 ## Data Exploration
-```sql
 Check for Null Values
+```sql
 select * 
 from customers
 where customer_id is NULL 
